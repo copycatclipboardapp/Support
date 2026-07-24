@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CopyCat — Support</title>
+  <meta name="description" content="Support and contact for CopyCat, a menu bar snippet board and clipboard history for macOS.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>🐾 CopyCat</h1>
+      <nav>
+        <a href="index.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </header>
+
+    <main>
+      <p class="lead">A menu bar snippet board and clipboard history for your Mac. No internet access at all — nothing you copy can leave your device.</p>
+
+      <h2>What it does</h2>
+      <ul class="feature-list">
+        <li><strong>Snippet board</strong> — save the text you paste all the time, organize it into groups, pin your favourites.</li>
+        <li><strong>Clipboard history</strong> — your recent copies, searchable and ready to paste again.</li>
+        <li><strong>Keyboard-first</strong> — ⌥⇧V opens the panel with search focused; ↑/↓ to move, Return to copy, ⌘1–⌘9 for the first nine items.</li>
+        <li><strong>Encrypted local storage</strong> — one AES-GCM encrypted file in the app sandbox, key held in your macOS Keychain.</li>
+        <li><strong>Password-safe</strong> — copies marked concealed by password managers are never recorded.</li>
+      </ul>
+
+      <h2>Common questions</h2>
+
+      <h3>I launched CopyCat and nothing happened.</h3>
+      <p>CopyCat has no Dock icon or window — it lives in the menu bar. Look for the 🐾 paw icon at the top right of your screen and click it, or press ⌥⇧V from any app.</p>
+
+      <h3>macOS is asking whether CopyCat can access text from other apps.</h3>
+      <p>macOS 15.4 and later show this prompt once for any app that reads the clipboard. Choose <strong>Allow Always</strong> — clipboard history can't work otherwise. You can change it later in System Settings → Privacy &amp; Security.</p>
+
+      <h3>Does my clipboard data get uploaded anywhere?</h3>
+      <p>No, and it can't be. CopyCat is sandboxed without the network entitlement, so macOS itself blocks the app from opening any connection. There's no account, no sync and no analytics.</p>
+
+      <h3>Are passwords saved in the history?</h3>
+      <p>No. Password managers mark their copies with the standard concealed / transient / auto-generated clipboard types, and CopyCat skips anything carrying those markers.</p>
+
+      <h3>How do I change the shortcut, or stop recording history?</h3>
+      <p>Open the panel, click the gear icon. There you can record a new shortcut, pause monitoring, set the history limit (25–200), turn on auto-delete after an hour or a day, clear history, or export your snippets as JSON.</p>
+
+      <h3>Where is my data stored, and how do I remove it?</h3>
+      <p>In the app's sandbox container at <code>~/Library/Containers/wutheringstudios.CopyCat/</code>, encrypted. Deleting CopyCat removes it. The encryption key is a Keychain item named <code>wutheringstudios.CopyCat</code>, which you can delete in Keychain Access.</p>
+
+      <h2>Need help?</h2>
+      <p>Send a message below or email <a href="mailto:copycatclipboardapp@gmail.com">copycatclipboardapp@gmail.com</a> directly. We'll usually reply within a few days.</p>
+
+      <form class="contact" action="https://formspree.io/f/xwvgrron" method="POST">
+        <input type="hidden" name="_subject" value="[CopyCat support]">
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <div class="gotcha" aria-hidden="true">
+          <label for="_gotcha">Leave this field empty</label>
+          <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit">Send message</button>
+      </form>
+    </main>
+
+    <footer>
+      <a href="privacy.html">Privacy Policy</a>·
+      <a href="terms.html">Terms &amp; Conditions</a>·
+      <a href="mailto:copycatclipboardapp@gmail.com">Contact</a>
+      <p>&copy; 2026 Wuthering Studios</p>
+    </footer>
+  </div>
+</body>
+</html>
