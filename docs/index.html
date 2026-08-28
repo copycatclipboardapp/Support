@@ -19,7 +19,7 @@
     </header>
 
     <main>
-      <p class="lead">A menu bar snippet board and clipboard history for your Mac. No internet access at all — nothing you copy can leave your device.</p>
+      <p class="lead">A menu bar snippet board and clipboard history for your Mac. No account, no sync, no analytics — nothing you copy ever leaves your device.</p>
 
       <h2>What it does</h2>
       <ul class="feature-list">
@@ -39,7 +39,7 @@
       <p>macOS 15.4 and later show this prompt once for any app that reads the clipboard. Choose <strong>Allow Always</strong> — clipboard history can't work otherwise. You can change it later in System Settings → Privacy &amp; Security.</p>
 
       <h3>Does my clipboard data get uploaded anywhere?</h3>
-      <p>No, and it can't be. CopyCat is sandboxed without the network entitlement, so macOS itself blocks the app from opening any connection. There's no account, no sync and no analytics.</p>
+      <p>No. There's no account, no sync, no analytics and no server of ours to send it to. CopyCat's only network connection is to Apple's App Store, used solely to show prices for the optional icon unlocks and to complete a purchase you start — nothing from your clipboard is part of that.</p>
 
       <h3>Are passwords saved in the history?</h3>
       <p>No. Password managers mark their copies with the standard concealed / transient / auto-generated clipboard types, and CopyCat skips anything carrying those markers.</p>
@@ -51,7 +51,7 @@
       <p>In the app's sandbox container at <code>~/Library/Containers/wutheringstudios.CopyCat/</code>, encrypted. Deleting CopyCat removes it. The encryption key is a Keychain item named <code>wutheringstudios.CopyCat</code>, which you can delete in Keychain Access.</p>
 
       <h2>Need help?</h2>
-      <p>Send a message below or email <a href="mailto:copycatclipboardapp@gmail.com">copycatclipboardapp@gmail.com</a> directly. We'll usually reply within a few days.</p>
+      <p>Send a message below or email <a href="mailto:copycat@wutheringstudios.com">copycat@wutheringstudios.com</a> directly. We'll usually reply within a few days.</p>
 
       <form class="contact" action="https://formspree.io/f/xwvgrron" method="POST">
         <input type="hidden" name="_subject" value="[CopyCat support]">
@@ -65,6 +65,11 @@
         <label for="subject">Subject</label>
         <input type="text" id="subject" name="subject" required>
 
+        <div id="diagnostics-row" hidden>
+          <label for="diagnostics">Diagnostics (sent from the app)</label>
+          <input type="text" id="diagnostics" name="diagnostics" readonly>
+        </div>
+
         <label for="message">Message</label>
         <textarea id="message" name="message" required></textarea>
 
@@ -75,12 +80,31 @@
 
         <button type="submit">Send message</button>
       </form>
+
+      <script>
+        // CopyCat's "Report a Problem" button opens this page with the version and
+        // the StoreKit error attached. Surface them in a visible, read-only field so
+        // the sender can see exactly what they are sending. Without a query string
+        // the form is unchanged.
+        (function () {
+          var q = new URLSearchParams(location.search);
+          var v = q.get('v');
+          if (!v) return;
+          var parts = ['v' + v];
+          if (q.get('build')) parts.push('build ' + q.get('build'));
+          if (q.get('err')) parts.push(q.get('err'));
+          document.getElementById('diagnostics').value = parts.join(' — ');
+          document.getElementById('diagnostics-row').hidden = false;
+          var subject = document.getElementById('subject');
+          if (!subject.value) subject.value = 'In-app purchases unavailable';
+        })();
+      </script>
     </main>
 
     <footer>
       <a href="privacy.html">Privacy Policy</a>·
       <a href="terms.html">Terms &amp; Conditions</a>·
-      <a href="mailto:copycatclipboardapp@gmail.com">Contact</a>
+      <a href="mailto:copycat@wutheringstudios.com">Contact</a>
       <p>&copy; 2026 Wuthering Studios</p>
     </footer>
   </div>
