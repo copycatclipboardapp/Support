@@ -27,7 +27,7 @@
         <li><strong>Clipboard history</strong> — your recent copies, searchable and ready to paste again.</li>
         <li><strong>Keyboard-first</strong> — ⌥⇧V opens the panel with search focused; ↑/↓ to move, Return to copy, ⌘1–⌘9 for the first nine items.</li>
         <li><strong>Encrypted local storage</strong> — one AES-GCM encrypted file in the app sandbox, key held in your macOS Keychain.</li>
-        <li><strong>Password-safe</strong> — copies marked concealed by password managers are never recorded.</li>
+        <li><strong>Password-safe</strong> — password managers are skipped entirely, and you can keep any other app out of your history too.</li>
       </ul>
 
       <h2>Common questions</h2>
@@ -42,10 +42,11 @@
       <p>No. There's no account, no sync, no analytics and no server of ours to send it to. CopyCat's only network connection is to Apple's App Store, used solely to show prices for the optional icon unlocks and to complete a purchase you start — nothing from your clipboard is part of that.</p>
 
       <h3>Are passwords saved in the history?</h3>
-      <p>No. Password managers mark their copies with the standard concealed / transient / auto-generated clipboard types, and CopyCat skips anything carrying those markers.</p>
+      <p>No. From version 2.4.0 CopyCat skips password managers as whole apps: Apple Passwords and Keychain Access are always skipped, and when CopyCat spots another password manager on your Mac it offers to skip that too. Nothing you copy in a skipped app is read at all — not just the password, but usernames, notes and recovery codes as well.</p>
+      <p>CopyCat also honours the concealed / transient / auto-generated clipboard markers, which many apps set on a copied password. That is a voluntary convention rather than a guarantee, though: not every app sets it, and those that do usually mark only the password field. That is why the app list above exists, and why you can add any app to it yourself under Settings &rsaquo; General &rsaquo; Never Record From.</p>
 
       <h3>How do I change the shortcut, or stop recording history?</h3>
-      <p>Open the panel, click the gear icon. There you can record a new shortcut, pause monitoring, set the history limit (25–200), turn on auto-delete after an hour or a day, clear history, or export your snippets as JSON.</p>
+      <p>Open the panel, click the gear icon. There you can record a new shortcut, pause monitoring, set the history limit (25–200), turn on auto-delete after an hour or a day, clear history, choose apps CopyCat should never record from, and export or import your snippets as JSON.</p>
 
       <h3>Where is my data stored, and how do I remove it?</h3>
       <p>In the app's sandbox container at <code>~/Library/Containers/wutheringstudios.CopyCat/</code>, encrypted. Deleting CopyCat removes it. The encryption key is a Keychain item named <code>wutheringstudios.CopyCat</code>, which you can delete in Keychain Access.</p>
