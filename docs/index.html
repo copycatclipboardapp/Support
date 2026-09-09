@@ -3,14 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CopyCat — Support</title>
-  <meta name="description" content="Support and contact for CopyCat, a menu bar snippet board and clipboard history for macOS.">
+  <title>Meow Clipboard — Support</title>
+  <meta name="description" content="Support and contact for Meow Clipboard, a menu bar snippet board and clipboard history for macOS.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>🐾 CopyCat</h1>
+      <div class="brand">
+        <h1>🐾 Meow Clipboard</h1>
+        <p class="former-name">Formerly CopyCat — same app, same cat.</p>
+      </div>
       <nav>
         <a href="index.html">Support</a>
         <a href="privacy.html">Privacy</a>
@@ -24,7 +27,7 @@
       <h2>What it does</h2>
       <ul class="feature-list">
         <li><strong>Snippet board</strong> — save the text you paste all the time, organize it into groups, pin your favourites.</li>
-        <li><strong>Clipboard history</strong> — your recent copies, searchable and ready to paste again.</li>
+        <li><strong>Clipboard history</strong> — your recent copies, searchable and ready to paste again, including whole documents.</li>
         <li><strong>Keyboard-first</strong> — ⌥⇧V opens the panel with search focused; ↑/↓ to move, Return to copy, ⌘1–⌘9 for the first nine items.</li>
         <li><strong>Encrypted local storage</strong> — one AES-GCM encrypted file in the app sandbox, key held in your macOS Keychain.</li>
         <li><strong>Password-safe</strong> — password managers are skipped entirely, and you can keep any other app out of your history too.</li>
@@ -32,33 +35,39 @@
 
       <h2>Common questions</h2>
 
-      <h3>I launched CopyCat and nothing happened.</h3>
-      <p>CopyCat has no Dock icon or window — it lives in the menu bar. Look for the 🐾 paw icon at the top right of your screen and click it, or press ⌥⇧V from any app.</p>
+      <h3>I launched Meow Clipboard and nothing happened.</h3>
+      <p>Meow Clipboard has no Dock icon or window — it lives in the menu bar. Look for the 🐾 paw icon at the top right of your screen and click it, or press ⌥⇧V from any app.</p>
 
-      <h3>macOS is asking whether CopyCat can access text from other apps.</h3>
+      <h3>macOS is asking whether Meow Clipboard can access text from other apps.</h3>
       <p>macOS 15.4 and later show this prompt once for any app that reads the clipboard. Choose <strong>Allow Always</strong> — clipboard history can't work otherwise. You can change it later in System Settings → Privacy &amp; Security.</p>
 
-      <h3>Can CopyCat paste for me, instead of just copying?</h3>
-      <p>No. Clicking an item puts it on your clipboard and closes the panel; you paste it yourself with ⌘V, wherever you want it. Pasting on your behalf would mean asking macOS for a system permission, and CopyCat asks for none.</p>
+      <h3>Can Meow Clipboard paste for me, instead of just copying?</h3>
+      <p>No. Clicking an item puts it on your clipboard and closes the panel; you paste it yourself with ⌘V, wherever you want it. Pasting on your behalf would mean asking macOS for a system permission, and Meow Clipboard asks for none.</p>
 
       <h3>Does my clipboard data get uploaded anywhere?</h3>
-      <p>No. There's no account, no sync, no analytics and no server of ours to send it to. CopyCat's only network connection is to Apple's App Store, used solely to show prices for the optional icon unlocks and to complete a purchase you start — nothing from your clipboard is part of that.</p>
+      <p>No. There's no account, no sync, no analytics and no server of ours to send it to. Meow Clipboard's only network connection is to Apple's App Store, used solely to show prices for the optional icon unlocks and to complete a purchase you start — nothing from your clipboard is part of that.</p>
 
       <h3>Are passwords saved in the history?</h3>
-      <p>No. From version 2.4.0 CopyCat skips password managers as whole apps: Apple Passwords and Keychain Access are always skipped, and when CopyCat spots another password manager on your Mac it offers to skip that too. Nothing you copy in a skipped app is read at all — not just the password, but usernames, notes and recovery codes as well.</p>
-      <p>CopyCat also honours the concealed / transient / auto-generated clipboard markers, which many apps set on a copied password. That is a voluntary convention rather than a guarantee, though: not every app sets it, and those that do usually mark only the password field. That is why the app list above exists, and why you can add any app to it yourself under Settings &rsaquo; General &rsaquo; Never Record From.</p>
+      <p>No. From version 2.4.0 Meow Clipboard skips password managers as whole apps: Apple Passwords and Keychain Access are always skipped, and when Meow Clipboard spots another password manager on your Mac it offers to skip that too. Nothing you copy in a skipped app is read at all — not just the password, but usernames, notes and recovery codes as well.</p>
+      <p>Meow Clipboard also honours the concealed / transient / auto-generated clipboard markers, which many apps set on a copied password. That is a voluntary convention rather than a guarantee, though: not every app sets it, and those that do usually mark only the password field. That is why the app list above exists, and why you can add any app to it yourself under Settings &rsaquo; General &rsaquo; Never Record From.</p>
+
+      <h3>I copied a long document and it didn't show up.</h3>
+      <p>Before version 2.6.0 anything longer than about 20,000 characters was discarded without a word, which is what you ran into. From 2.6.0 a long copy is recorded in full and kept exactly as you copied it for 24 hours, so you can still paste the whole thing later that day. After that Meow Clipboard shortens the stored copy so your history stays quick to search. Copies larger than 2 MB are still too big to keep — but Meow Clipboard now tells you at the moment you copy, rather than leaving a gap for you to find.</p>
+
+      <h3>Why does one of my history items end in “…”?</h3>
+      <p>Because it was longer than Meow Clipboard keeps and its 24 hours are up, so the stored text has been shortened. The row is marked with a scissors badge and says how many characters the original had. The full text was available for the first 24 hours after the copy; after that only the shortened version is kept, and the ellipsis is there so you can tell at a glance that pasting it will not give you the whole document.</p>
 
       <h3>How do I change the shortcut, or stop recording history?</h3>
-      <p>Open the panel, click the gear icon. There you can record a new shortcut, pause monitoring, set the history limit (25–200), turn on auto-delete after an hour or a day, clear history, choose apps CopyCat should never record from, and export or import your snippets as JSON.</p>
+      <p>Open the panel, click the gear icon. There you can record a new shortcut, pause monitoring, set the history limit (25–200), turn on auto-delete after an hour or a day, clear history, choose apps Meow Clipboard should never record from, and export or import your snippets as JSON.</p>
 
       <h3>Where is my data stored, and how do I remove it?</h3>
-      <p>In the app's sandbox container at <code>~/Library/Containers/wutheringstudios.CopyCat/</code>, encrypted. Deleting CopyCat removes it. The encryption key is a Keychain item named <code>wutheringstudios.CopyCat</code>, which you can delete in Keychain Access.</p>
+      <p>In the app's sandbox container at <code>~/Library/Containers/wutheringstudios.CopyCat/</code>, encrypted. Deleting Meow Clipboard removes it. The encryption key is a Keychain item named <code>wutheringstudios.CopyCat</code>, which you can delete in Keychain Access.</p>
 
       <h2>Need help?</h2>
       <p>Send a message below or email <a href="mailto:copycat@wutheringstudios.com">copycat@wutheringstudios.com</a> directly. We'll usually reply within a few days.</p>
 
       <form class="contact" action="https://formspree.io/f/xwvgrron" method="POST">
-        <input type="hidden" name="_subject" value="[CopyCat support]">
+        <input type="hidden" name="_subject" value="[Meow Clipboard support]">
 
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required autocomplete="name">
@@ -86,7 +95,7 @@
       </form>
 
       <script>
-        // CopyCat's "Report a Problem" button opens this page with the version and
+        // Meow Clipboard's "Report a Problem" button opens this page with the version and
         // the StoreKit error attached. Surface them in a visible, read-only field so
         // the sender can see exactly what they are sending. Without a query string
         // the form is unchanged.

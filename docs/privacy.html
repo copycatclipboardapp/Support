@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Policy — CopyCat</title>
-  <meta name="description" content="Privacy policy for CopyCat, a menu bar clipboard app for macOS that collects no data.">
+  <title>Privacy Policy — Meow Clipboard</title>
+  <meta name="description" content="Privacy policy for Meow Clipboard, a menu bar clipboard app for macOS that collects no data.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>🐾 CopyCat</h1>
+      <h1>🐾 Meow Clipboard</h1>
       <nav>
         <a href="index.html">Support</a>
         <a href="privacy.html">Privacy</a>
@@ -20,50 +20,54 @@
 
     <main>
       <h1>Privacy Policy</h1>
-      <p class="effective">Effective 4 September 2026</p>
+      <p class="effective">Effective 9 September 2026</p>
 
-      <p>CopyCat ("the app") is a macOS menu bar app developed by Wuthering Studios ("we"). This policy explains what happens to your data. The short version: <strong>nothing you copy ever leaves your Mac, and we never receive any of it.</strong></p>
+      <p>Meow Clipboard ("the app") is a macOS menu bar app developed by Wuthering Studios ("we"). This policy explains what happens to your data. The short version: <strong>nothing you copy ever leaves your Mac, and we never receive any of it.</strong></p>
 
       <h2>Data we collect</h2>
-      <p>None. CopyCat has no accounts, no sign-in, no analytics, no crash reporting, no advertising and no third-party trackers. We do not receive, see or store any information about you or your use of the app.</p>
+      <p>None. Meow Clipboard has no accounts, no sign-in, no analytics, no crash reporting, no advertising and no third-party trackers. We do not receive, see or store any information about you or your use of the app.</p>
 
       <h2>The one network connection, and what it is for</h2>
-      <p>CopyCat runs in the macOS App Sandbox. It can make exactly one kind of network connection: to Apple's App Store, so it can show the prices of the optional menu bar icon unlocks and complete a purchase you start. That exchange is handled by Apple and contains nothing from your clipboard.</p>
+      <p>Meow Clipboard runs in the macOS App Sandbox. It can make exactly one kind of network connection: to Apple's App Store, so it can show the prices of the optional menu bar icon unlocks and complete a purchase you start. That exchange is handled by Apple and contains nothing from your clipboard.</p>
       <p>There is no server of ours to send anything to. We receive no data from the app — not your snippets, not your history, not analytics, not even a count of installs. Purchases are verified on your Mac by StoreKit, with no account and no receipt sent anywhere by us.</p>
 
       <h2>Data the app stores on your Mac</h2>
       <ul>
         <li><strong>Snippets and groups</strong> you create.</li>
         <li><strong>Clipboard history</strong> — text you copy while monitoring is on, capped at your chosen limit (25–200 items, default 100).</li>
-        <li><strong>Images you copy</strong>, from version 2.0.0, if you agree to it — CopyCat asks the first time, and the answer is a setting you can change at any time. Up to 20 are kept, each up to 10 MB, in their own encrypted store separate from your text. Images you save as named snippets are kept until you delete them.</li>
+        <li><strong>Long copies, in full for 24 hours</strong>, from version 2.6.0. Until then anything longer than about 20,000 characters was discarded outright and never stored. It is now recorded exactly as you copied it, kept whole for 24 hours, and then shortened back to roughly 20,000 characters — the shortened version is what remains after that, and the row is marked to show it. A copy larger than 2 MB is still not recorded at all; Meow Clipboard tells you so at the time rather than staying silent.</li>
+        <li><strong>Images you copy</strong>, from version 2.0.0, if you agree to it — Meow Clipboard asks the first time, and the answer is a setting you can change at any time. Up to 20 are kept, each up to 10 MB, in their own encrypted store separate from your text. Images you save as named snippets are kept until you delete them.</li>
+        <li><strong>Files you copy</strong>, from version 2.7.0 — their <em>locations</em> only. Copy one or more files in Finder and the row records where they are, so clicking it can put the same files back on your clipboard. The files themselves are never opened and their contents are never read or stored; what is kept is the path, the same text you would see in Finder's title bar.</li>
         <li><strong>The app each copy came from</strong>, from version 2.4.0 — its name and identifier, stored beside the copy so history rows can tell you where something came from. It is the name of the app only; nothing about what that app was doing. Items copied before 2.4.0 have none, and neither does a copy macOS cannot attribute.</li>
         <li><strong>Settings</strong> — your shortcut, history limit, auto-delete choice, optional background image, and any apps you have excluded.</li>
       </ul>
       <p>Snippets, groups and history are written to a single file inside the app's sandbox container, encrypted with AES-GCM. The encryption key is generated on your Mac and stored only in your macOS Keychain; the file cannot be read without it. Settings are stored in the app's own preferences within the same container.</p>
-      <p>From version 2.3.0 that key lives in the data protection keychain, which grants access based on the app's own identity. Earlier versions used the login keychain, where access is tied to the exact signed copy of the app — so a routine update could make macOS ask for your login keychain password before CopyCat could read its own key. If you see that request once while updating, it is macOS confirming CopyCat may unlock its own key; nothing is sent anywhere, and it does not happen again.</p>
+      <p>From version 2.3.0 that key lives in the data protection keychain, which grants access based on the app's own identity. Earlier versions used the login keychain, where access is tied to the exact signed copy of the app — so a routine update could make macOS ask for your login keychain password before Meow Clipboard could read its own key. If you see that request once while updating, it is macOS confirming Meow Clipboard may unlock its own key; nothing is sent anywhere, and it does not happen again.</p>
+      <p><strong>Dragging an image out is the one moment a copy is written unencrypted</strong>, from version 2.7.0. To drag an image into another app, Meow Clipboard has to hand that app a real file, so it writes one into its own temporary folder inside the sandbox container. The folder is readable only by your macOS user account, the file is reused rather than duplicated if you drag the same image again, and it is deleted about a minute after you close the panel — and in any case whenever Meow Clipboard next starts. Dragging text writes nothing to disk.</p>
 
       <h2>What the app never records</h2>
       <ul>
-        <li>Anything copied in a password manager. From version 2.4.0 CopyCat keeps a built-in list of them — Apple Passwords and Keychain Access among others — and skips those apps entirely, whatever you copy there. If yours isn't recognised, add it yourself under <strong>Never Record From</strong>.</li>
+        <li>Anything copied in a password manager. From version 2.4.0 Meow Clipboard keeps a built-in list of them — Apple Passwords and Keychain Access among others — and skips those apps entirely, whatever you copy there. If yours isn't recognised, add it yourself under <strong>Never Record From</strong>.</li>
         <li>Clipboard items marked <code>org.nspasteboard.ConcealedType</code>, <code>TransientType</code> or <code>AutoGeneratedType</code>. These are a voluntary convention: an app that sets them is telling every clipboard tool not to keep the copy. Many password managers do, and only for the password itself — which is why the app list above exists rather than relying on it.</li>
         <li>Anything you copy in an app you have added to <strong>Never Record From</strong> (version 2.4.0 and later). Those copies are not read at all, rather than read and discarded.</li>
         <li>Images, whenever "Include images" is switched off.</li>
-        <li>The contents of files. Copying a file in Finder places a reference to it on the clipboard, not the file itself, and CopyCat never opens it.</li>
+        <li>The contents of files. Copying a file places a reference to it on the clipboard, not the file itself. From version 2.7.0 Meow Clipboard records that reference so you can copy the file again — but it never opens the file, and nothing inside it is read or stored.</li>
         <li>Anything at all while "Pause clipboard monitoring" is switched on.</li>
+        <li>Any single copy larger than 2 MB, from version 2.6.0. It is not stored in any form, shortened or otherwise.</li>
       </ul>
 
       <h2>Your control over the data</h2>
       <ul>
         <li>Clear the entire history at any time from Settings.</li>
-        <li>Name apps under <strong>Never Record From</strong> so CopyCat skips them entirely — a password manager, a terminal, or anything with someone else's details on screen.</li>
+        <li>Name apps under <strong>Never Record From</strong> so Meow Clipboard skips them entirely — a password manager, a terminal, or anything with someone else's details on screen.</li>
         <li>Turn on auto-delete so history is discarded after an hour or a day.</li>
         <li>Delete individual snippets or history items from the panel.</li>
         <li>Export snippets to a JSON file you choose the location of — that file is written unencrypted, so store it somewhere you trust.</li>
-        <li>Deleting the app removes its container and everything in it. The Keychain item named <code>wutheringstudios.CopyCat</code> can be removed separately using the Keychain Access app. On macOS 26 it is no longer in Applications &rsaquo; Utilities — open it with Spotlight, or from <code>/System/Library/CoreServices/Applications/</code>. Look under <strong>Local Items</strong>; if you used CopyCat before 2.3.0 there may be a second copy of the same item under <strong>login</strong>, which is no longer read and can be removed too.</li>
+        <li>Deleting the app removes its container and everything in it. The Keychain item named <code>wutheringstudios.CopyCat</code> can be removed separately using the Keychain Access app. On macOS 26 it is no longer in Applications &rsaquo; Utilities — open it with Spotlight, or from <code>/System/Library/CoreServices/Applications/</code>. Look under <strong>Local Items</strong>; if you used Meow Clipboard before 2.3.0 there may be a second copy of the same item under <strong>login</strong>, which is no longer read and can be removed too.</li>
       </ul>
 
       <h2>Children</h2>
-      <p>CopyCat is not directed at children and collects no data from anyone, including children under 13.</p>
+      <p>Meow Clipboard is not directed at children and collects no data from anyone, including children under 13.</p>
 
       <h2>Changes to this policy</h2>
       <p>If the app ever gains a feature that changes any of the above, this page will be updated before that version is released, and the effective date at the top will change.</p>

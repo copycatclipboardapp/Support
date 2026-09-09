@@ -194,3 +194,12 @@ form.contact button:hover { filter: brightness(1.05); }
   font-size: 14px;
   font-style: italic;
 }
+
+/* The header is a two-child flex row (name, nav). The rename note has to ride
+   with the name rather than becoming a third child, or it lands between them. */
+.brand { display: flex; flex-direction: column; gap: 2px; }
+.former-name {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
